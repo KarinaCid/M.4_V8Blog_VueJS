@@ -5,15 +5,17 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><router-link :to="{name: 'inicio'}">Portada</router-link></li>
-                    <li class="nav-item" role="presentation"><router-link :to="{name: 'sobremi'}">Sobre mí</router-link></li>
-                    <li class="nav-item" role="presentation"><router-link :to="{name: 'contacto'}">Contacto</router-link></li>
+                    <li class="nav-item" role="presentation"><router-link :to="{name: 'home'}">Portada</router-link></li>
+                    <li class="nav-item" role="presentation"><router-link :to="{name: 'aboutme'}">Sobre mí</router-link></li>
+                    <li class="nav-item" role="presentation"><router-link :to="{name: 'contact'}">Contacto</router-link></li>
                     <li class="nav-item" role="presentation"><router-link to="/post/ultimo-post">Ultimo post</router-link></li>
                 </ul>
         </div>
         </div>
     </nav>
-    <router-view></router-view>
+    <transition name="v8vue">
+      <router-view></router-view>
+    </transition>
   </div>
   
 </template>
@@ -33,5 +35,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.v8vue-enter-active,
+.v8vue-leave-active {
+  transition: opacity 0.8s ;
+}
+.v8vue-enter,
+.v8vue-leave-to {
+  opacity: 0;
 }
 </style>

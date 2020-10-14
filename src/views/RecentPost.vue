@@ -53,7 +53,7 @@
         </div>
     </div>
 </footer>
-        <router-view :to="{name: 'articulo'}"></router-view>
+        <router-view :to="{name: 'article'}"></router-view>
         <footer>
             <div class="container">
                 <div class="row">

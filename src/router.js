@@ -1,54 +1,49 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Inicio from './components/Inicio'
-import SobreMi from './components/SobreMi'
-import Contacto from './components/Contacto'
-import NotFound from './components/NotFound'
-import RecentPost from './components/RecentPost'
-import Administrador from './components/Administrador'
+import NotFound from './views/NotFound'
+
 
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history', 
-    routes: [
-        {
-            path: '/',
-            name: 'inicio',
-            component: Inicio
-        },
-        {
-            path: '/sobremi',
-            name: 'sobremi',
-            component: SobreMi,
-            alias: ['/acerca']
-
-        },
-        {
-            path: '/contactame',
-            redirect: {name: 'contacto'}
-        },
-        {
-            path: '/contacto',
-            name: 'contacto',
-            component: Contacto,
-
-        },
-        {
-            path: '/post/:number',
-            name: 'RecentPost',
-            component: RecentPost
-        },
-        {
-            path: '*',
-            name: 'NotFound',
-            component: NotFound,
-        },
-        {
-            path: '/administrador/:admin',
-            name: 'Administrador',
-            component: Administrador,
-            props: true
-        }
-    ]
+  mode: 'history', 
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: () => import (/* webpackChunkName: "Home" */ '../src/views/Home')
+    },
+    {
+      path: '/sobremi',
+      name: 'aboutme',
+      component: () => import (/* webpackChunkName: "aboutme" */ '../src/views/AboutMe'),
+      alias: ['/acerca']
+      
+    },
+    {
+      path: '/contactame',
+      redirect: {name: 'contact'}
+    },
+    {
+      path: '/contacto',
+      name: 'contact',
+      component: () => import (/* webpackChunkName: "Contact" */ '../src/views/Contact')
+    },
+    {
+      path: '/post/:number',
+      name: 'RecentPost',
+      component: () => import (/* webpackChunkName: "RecentPost" */ '../src/views/RecentPost')
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: NotFound,
+    },
+    {
+      path: '/administrator/:admin',
+      name: 'Administrator',
+      component: () => import (/* webpackChunkName: "Administrator" */ '../src/views/Administrator'),
+      props: true
+    }
+  ]
 })
